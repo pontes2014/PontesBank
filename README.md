@@ -1,2 +1,2 @@
-# flutter_application_1
- Um projeto pessoal utilizando api e banco de dados
+# PontesBank
+ PontesBank: o aplicativo bancário que une a praticidade do SQFlite ao poder da WebAPI. Gerencie contatos com facilidade, graças ao armazenamento seguro de dados. Realize transferências instantâneas com nossa conexão criptografada, proporcionando tranquilidade em cada transação. Interface intuitiva, autenticação em dois fatores e foco na segurança garantem uma experiência bancária sem preocupações. Simplifique suas finanças com o PontesBank e desfrute do futuro dos serviços bancários móveis.

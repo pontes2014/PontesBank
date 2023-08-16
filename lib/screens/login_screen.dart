@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/background_app.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -7,15 +8,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Colors.indigoAccent,
-            Colors.purple,
-          ],
-        )),
+        decoration: BackgroundApp.gradientBoxDecoration,
         child: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

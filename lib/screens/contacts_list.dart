@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/components/background_app.dart';
 import 'package:flutter_application_1/components/contact_card.dart';
 import 'package:flutter_application_1/dataBase/app_database.dart';
 import 'package:flutter_application_1/models/contact.dart';
@@ -27,26 +28,17 @@ class _ContactsListState extends State<ContactsList> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-              return const Text("No connection.");
+              return const Text("Sem conexao.");
             case ConnectionState.waiting:
               return const CircularProgressIndicator();
             case ConnectionState.active:
             case ConnectionState.done:
               if (snapshot.hasError) {
-                return Text("Error: ${snapshot.error}");
+                return Text("Erro: ${snapshot.error}");
               } else if (snapshot.hasData) {
                 final List<Contact> contacts = snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Colors.indigoAccent,
-                        Colors.purple,
-                      ],
-                    ),
-                  ),
+                  decoration: BackgroundApp.gradientBoxDecoration,
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       final Contact contact = contacts[index];

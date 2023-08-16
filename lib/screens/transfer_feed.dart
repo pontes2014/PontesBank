@@ -1,53 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/background_app.dart';
+import 'package:flutter_application_1/http/webclient.dart';
 
 import '../models/contact.dart';
 
 class TransactionsList extends StatelessWidget {
-  final List<Transaction> transactions = [];
-
   @override
   Widget build(BuildContext context) {
-    transactions.add(Transaction(100.0, Contact(0, 'Alex', 1000)));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transactions'),
         backgroundColor: Colors.indigoAccent,
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.indigoAccent,
-              Colors.purple,
-            ],
-          ),
-        ),
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            final Transaction transaction = transactions[index];
-            return Card(
-              child: ListTile(
-                leading:const Icon(Icons.monetization_on),
-                title: Text(
-                  transaction.value.toString(),
-                  style: const TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
+      body: FutureBuilder<List<Transaction>>(
+        future: findAll(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return const Center(
+                child: Text('Sem conexao'),
+              );
+            case ConnectionState.waiting:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.active:
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text('Erro ao carregar os dados'),
+                );
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(
+                  child: Text('Nenhuma transaçao encontrada'),
+                );
+              } else {
+                final List<Transaction> transactions = snapshot.data!;
+                return Container(
+                  decoration: BackgroundApp.gradientBoxDecoration,
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      final Transaction transaction = transactions[index];
+                      return Card(
+                        child: ListTile(
+                          leading: const Icon(Icons.monetization_on),
+                          title: Text(
+                            transaction.value.toString(),
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            transaction.contact.accountNumber.toString(),
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: transactions.length,
                   ),
-                ),
-                subtitle: Text(
-                  transaction.contact.accountNumber.toString(),
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                  ),
-                ),
-              ),
-            );
-          },
-          itemCount: transactions.length,
-        ),
+                );
+              }
+          }
+        },
       ),
     );
   }

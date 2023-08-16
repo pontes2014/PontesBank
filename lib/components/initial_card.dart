@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 class CardInitial extends StatelessWidget {
   final IconData icon;
   final String text;
-  const CardInitial({required this.icon, required this.text, super.key});
+  final String route;
+  const CardInitial({required this.icon,required this.route, required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(onTap: () {
-      Navigator.pushNamed(context, '/contacts');
+      Navigator.pushNamed(context, route);
     },
       child: Container(
         decoration: const BoxDecoration(
@@ -31,12 +32,12 @@ class CardInitial extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 10),
               child: Container(
                 child: Text(text,
                     style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w600)),
               ),
             )

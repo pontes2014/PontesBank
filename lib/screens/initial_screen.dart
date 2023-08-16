@@ -28,12 +28,14 @@ class DashboardScreen extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.w900)),
             CardInitial(
-              icon: Icons.people,
-              text: 'CONTACTS',
-            ),
-            CardInitial(
               icon: Icons.attach_money,
               text: 'TRANSFER',
+              route: '/contacts',
+            ),
+            CardInitial(
+              icon: Icons.feed,
+              text: 'TRANSACTION FEED',
+              route: '/feed',
             )
           ],
         )),

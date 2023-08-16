@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter_application_1/components/contact_card.dart';
 import 'package:flutter_application_1/dataBase/app_database.dart';
 import 'package:flutter_application_1/models/contact.dart';
@@ -28,9 +27,9 @@ class _ContactsListState extends State<ContactsList> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
-              return Text("No connection.");
+              return const Text("No connection.");
             case ConnectionState.waiting:
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             case ConnectionState.active:
             case ConnectionState.done:
               if (snapshot.hasError) {

@@ -1,5 +1,5 @@
 # PontesBank
-#### PontesBank: projeto desenvolvido utilizando o framework Flutter, no qual foram integradas as tecnologias Sqflite para armazenamento local e uma WebAPI para funcionalidades de transferência. O propósito primordial desse projeto é permitir aos usuários armazenar informações de contatos e executar transferências por intermédio da referida WebAPI. Esse sistema oferece uma abordagem completa, unindo a capacidade de gerenciamento de dados internos com a funcionalidade de transferência via plataforma online.
+#### PontesBank: projeto desenvolvido utilizando o framework Flutter, no qual foram integradas as tecnologias Sqflite para armazenamento local e uma WebAPI para funcionalidades de transferência. 
 ![Screenshot_1](https://github.com/pontes2014/PontesBank/assets/91500779/f2a14c5b-4246-45e5-94c7-4f234b8ed66b)
 ![Screenshot_2](https://github.com/pontes2014/PontesBank/assets/91500779/5166ea6f-5253-4b22-96a8-873e52fcd5a4)
 
